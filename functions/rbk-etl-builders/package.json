@@ -1,0 +1,16 @@
+{
+    "name": "rbk-etl-builders",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Lambda function for ETL on builders",
+    "main": "index.js",
+    "scripts": {
+      "zip": "zip -r function.zip index.js node_modules/"
+    },
+    "dependencies": {
+      "@aws-sdk/client-s3": "^3.x.x",
+      "pg": "^8.x.x",
+      "csv-parser": "^3.x.x"
+    }
+  }
+  
