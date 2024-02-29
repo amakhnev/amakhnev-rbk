@@ -1,0 +1,38 @@
+{
+	"Records": [
+		{
+			"eventVersion": "2.1",
+			"eventSource": "aws:s3",
+			"awsRegion": "eu-west-2",
+			"eventTime": "2024-02-29T09:23:56.881Z",
+			"eventName": "ObjectCreated:Put",
+			"userIdentity": {
+				"principalId": "AWS:AIDAUOLV5ZPOQEOGNBF72"
+			},
+			"requestParameters": {
+				"sourceIPAddress": "81.108.47.8"
+			},
+			"responseElements": {
+				"x-amz-request-id": "H4Z1FJHFQA2ANXP1",
+				"x-amz-id-2": "Mghtf5OnhumR+ozLMd4IAvHf9ZGA1D8iAkjZB48bNw1S+Du7uCIBDvgMQ0ljqu+GdhuKyKCl00OoOY2J5bY8QHMCkk8TamYB"
+			},
+			"s3": {
+				"s3SchemaVersion": "1.0",
+				"configurationId": "rbk-data-builders-created",
+				"bucket": {
+					"name": "rbk-data",
+					"ownerIdentity": {
+						"principalId": "A36WUEL69AGF7K"
+					},
+					"arn": "arn:aws:s3:::rbk-data"
+				},
+				"object": {
+					"key": "builders_20240229.csv",
+					"size": 102,
+					"eTag": "b502c3c0649253f280d5043598fc6af3",
+					"sequencer": "0065E04D2CD60CA8C9"
+				}
+			}
+		}
+	]
+}

@@ -1,5 +1,10 @@
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+// support local testing
+import { fileURLToPath } from 'url';
+import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config();
 
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import pkg from 'pg';
 const { Client } = pkg;
 import csv from 'csv-parser';
@@ -12,6 +17,9 @@ const dbConfig = {
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
   port: parseInt(process.env.DB_PORT || '5432'),
+  ssl: {
+    rejectUnauthorized: false // Note: Setting this to false is not recommended for production
+  }
 };
 
 export const handler = async (event) => {
@@ -83,3 +91,12 @@ const upsertBuilder = async (client, builderName, marketTypes) => {
     }
   }
 };
+
+// Check if the script is being run directly in ES Module syntax
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  import('./mockEvent.json', { assert: { type: 'json' } })
+      .then((mockEvent) => {
+          handler(mockEvent.default).then((response) => console.log(response));
+      })
+      .catch((error) => console.error(error));
+}
